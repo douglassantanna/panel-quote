@@ -1,0 +1,23 @@
+<h2>{{title}}</h2>
+<form [formGroup]="customerForm">
+
+  <div class="container">
+    <mat-form-field appearance="outline" class="big-input">
+      <input matInput maxlength="255" type="text" formControlName="name" placeholder="Nome" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="medium-input">
+      <input matInput maxlength="255" type="text" formControlName="email" placeholder="E-mail" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="medium-input">
+      <input matInput maxlength="255" type="text" formControlName="phoneNumber" placeholder="Telefone" />
+    </mat-form-field>
+
+  </div>
+</form>
+<div class="button">
+  <button mat-raised-button color="secondary" type="button" routerLink="/suppliers">Voltar</button>
+  <button mat-raised-button [disabled]="!customerForm.valid" color="primary" type="button"
+    [mat-dialog-close]="submit()">Enviar</button>
+</div>

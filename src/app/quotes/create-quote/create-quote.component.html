@@ -1,0 +1,32 @@
+<mat-stepper labelPosition="bottom" #stepper>
+  <mat-step [stepControl]="form" errorMessage="Name is required.">
+    <ng-template matStepLabel>Selecione um fornecedor</ng-template>
+    <app-search-customer [customerForm]="this.form.value">
+    </app-search-customer>
+    <div>
+      <button mat-button matStepperNext>Next</button>
+    </div>
+  </mat-step>
+  <mat-step [stepControl]="secondFormGroup" errorMessage="Address is required.">
+    <form [formGroup]="secondFormGroup">
+      <mat-form-field appearance="fill">
+        <mat-label>Address</mat-label>
+        <input matInput placeholder="Ex. 1 Main St, New York, NY" formControlName="secondCtrl" required>
+      </mat-form-field>
+      <div>
+        <p>Go to a different step to see the error state</p>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Done</ng-template>
+    <p>You are now done.</p>
+    <div>
+      <button mat-button matStepperPrevious>Back</button>
+      <button mat-button (click)="stepper.reset()">Reset</button>
+    </div>
+  </mat-step>
+</mat-stepper>
+<pre>PEDIDO A SER ENVIADO: {{ this.form.value | json }}</pre>

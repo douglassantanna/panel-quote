@@ -1,0 +1,32 @@
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+mat-form-field {
+  width: 300px;
+}
+
+.button button {
+  width: 90px;
+}
+
+.button {
+  display: flex;
+  justify-content: flex-end;
+  gap: 5px;
+}
+
+.big-input {
+  width: 50%;
+}
+
+.medium-input {
+  width: 33%;
+}
+
+.container {
+  display: flex;
+  gap: 5px;
+}

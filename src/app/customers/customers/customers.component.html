@@ -1,0 +1,49 @@
+<mat-card class="column-flex">
+  <mat-toolbar color="primary">
+    <span>
+      Clientes
+    </span>
+    <button type="button" (click)="newCustomer()" mat-stroked-button>Novo</button>
+  </mat-toolbar>
+
+  <div *ngIf="customers$ | async as customers; else loading">
+
+    <mat-table [dataSource]="customers" class="mat-elevation-z8">
+
+      <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef> Nome </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="phoneNumber">
+        <mat-header-cell *matHeaderCellDef> Telefone </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.phoneNumber}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="email">
+        <mat-header-cell *matHeaderCellDef> E-mail </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.email}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="actions">
+        <mat-header-cell *matHeaderCellDef class="action-column"></mat-header-cell>
+        <mat-cell *matCellDef="let element" class="action-column">
+          <button mat-icon-button color="primary" (click)="editCustomer(element)">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button color="warn" (click)="deleteCustomer(element.id)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+
+  </div>
+  <ng-template #loading>
+    <div class="mat-title">Carregando clientes...</div>
+  </ng-template>
+
+</mat-card>

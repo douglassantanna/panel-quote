@@ -1,0 +1,17 @@
+<mat-card class="mat-elevation-z3">
+  <mat-card-subtitle>Orçamento: {{viewQuote.id}}</mat-card-subtitle>
+  <mat-card-title>Cliente: {{viewQuote.customer.name}}</mat-card-title>
+  <mat-card-content>
+    <p>Telefone: {{viewQuote.customer.phoneNumber}}</p>
+    <p>Altura placa: {{viewQuote.panelHeigth}}</p>
+    <p>Largura placa: {{viewQuote.panelWidth}}</p>
+  </mat-card-content>
+  <mat-divider inset></mat-divider>
+  <mat-card-actions>
+    <button mat-icon-button>
+      <mat-icon>visibility</mat-icon>
+    </button>
+  </mat-card-actions>
+  <mat-card-footer>
+  </mat-card-footer>
+</mat-card>

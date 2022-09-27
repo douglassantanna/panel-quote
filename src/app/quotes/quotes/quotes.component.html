@@ -1,0 +1,21 @@
+<div class="header">
+  <h2>Novo Orçamento</h2>
+  <button mat-mini-fab color="primary" routerLink="create-quote">
+    <mat-icon>add_circle</mat-icon>
+  </button>
+</div>
+<div class="quotes" *ngIf="quotes;else loadingError">
+
+  <mat-grid-list [cols]="3" [rowHeight]="'280px'">
+    <mat-grid-tile *ngFor="let quote of quotes">
+
+      <app-view-quote-card [viewQuote]="quote">
+
+      </app-view-quote-card>
+
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>
+<ng-template #loadingError>
+  <div class="mat-title">Carregando orçamentos...</div>
+</ng-template>

@@ -1,0 +1,15 @@
+.content {
+  max-width: 80%;
+  margin: 2rem auto;
+  text-align: center;
+}
+
+mat-toolbar {
+  display: flex;
+
+  min-width: 480px;
+
+  span {
+    margin-right: 10px;
+  }
+}

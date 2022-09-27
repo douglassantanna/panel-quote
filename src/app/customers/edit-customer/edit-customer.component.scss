@@ -1,0 +1,23 @@
+form {
+  display: flex;
+}
+
+mat-form-field {
+  width: 300px;
+}
+
+.button button {
+  width: 90px;
+}
+
+.button {
+  display: flex;
+  justify-content: flex-end;
+  gap: 5px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
