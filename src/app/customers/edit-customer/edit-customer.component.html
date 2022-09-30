@@ -4,6 +4,16 @@
   <div class="container">
     <mat-form-field appearance="outline" class="big-input">
       <input matInput maxlength="255" type="text" formControlName="name" placeholder="Nome" />
+      <mat-error *ngIf="name.hasError('required')">
+        Nome é obrigatório
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <input matInput type="date" formControlName="birthDate">
+      <mat-error *ngIf="birthDate.hasError('minLength')">
+        menor de idade
+      </mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="outline" class="medium-input">
@@ -17,7 +27,6 @@
   </div>
 </form>
 <div class="button">
-  <button mat-raised-button color="secondary" type="button" routerLink="/suppliers">Voltar</button>
   <button mat-raised-button [disabled]="!customerForm.valid" color="primary" type="button"
     [mat-dialog-close]="submit()">Enviar</button>
 </div>

@@ -1,0 +1,46 @@
+<form [formGroup]="quote">
+
+  <div class="first">
+
+    <mat-form-field appearance="outline">
+      <mat-label>Largura painel</mat-label>
+      <input matInput placeholder="Largura painel" formControlName="panelWidth" type="text">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Altura painel</mat-label>
+      <input matInput placeholder="Altura painel" formControlName="panelHeigth" type="text">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Cor de fundo do painel</mat-label>
+      <input matInput placeholder="Branco, azul.." formControlName="panelColor" type="text">
+    </mat-form-field>
+
+  </div>
+
+  <div class="second">
+
+    <mat-form-field appearance="outline">
+      <mat-label>Tipo Fonte</mat-label>
+      <input matInput placeholder="Ex: Roboto, Montserrat" formControlName="fontType" type="text">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Tamanho do texto em cm</mat-label>
+      <input matInput placeholder="Tamanho do texto em cm" formControlName="fontSize" type="text">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Cor do texto</mat-label>
+      <input matInput placeholder="Cor do texto" formControlName="fontColor" type="text">
+    </mat-form-field>
+
+  </div>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Texto a ser escrito</mat-label>
+    <textarea matInput placeholder="Escreva alguma mensagem.." formControlName="textArea" type="text"></textarea>
+  </mat-form-field>
+
+</form>

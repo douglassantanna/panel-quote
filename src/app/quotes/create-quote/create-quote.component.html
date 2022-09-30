@@ -1,32 +1,58 @@
 <mat-stepper labelPosition="bottom" #stepper>
-  <mat-step [stepControl]="form" errorMessage="Name is required.">
-    <ng-template matStepLabel>Selecione um fornecedor</ng-template>
-    <app-search-customer [customerForm]="this.form.value">
-    </app-search-customer>
-    <div>
-      <button mat-button matStepperNext>Next</button>
-    </div>
-  </mat-step>
-  <mat-step [stepControl]="secondFormGroup" errorMessage="Address is required.">
-    <form [formGroup]="secondFormGroup">
-      <mat-form-field appearance="fill">
-        <mat-label>Address</mat-label>
-        <input matInput placeholder="Ex. 1 Main St, New York, NY" formControlName="secondCtrl" required>
-      </mat-form-field>
-      <div>
-        <p>Go to a different step to see the error state</p>
-        <button mat-button matStepperPrevious>Back</button>
-        <button mat-button matStepperNext>Next</button>
-      </div>
-    </form>
-  </mat-step>
+
   <mat-step>
-    <ng-template matStepLabel>Done</ng-template>
-    <p>You are now done.</p>
-    <div>
-      <button mat-button matStepperPrevious>Back</button>
-      <button mat-button (click)="stepper.reset()">Reset</button>
-    </div>
+    <ng-template matStepLabel>Selecione um cliente</ng-template>
+    <mat-card class="mat-elevation-z3">
+
+      <mat-card-content>
+        <app-search-customer (onFormCustomerGroupChange)="onFormCustomerGroupChangeEvent($event)">
+
+        </app-search-customer>
+      </mat-card-content>
+
+      <button mat-raised-button type="button" color="secondary" routerLink="/">Cancelar</button>
+      <button mat-raised-button type="button" color="primary" matStepperNext>Proximo</button>
+
+    </mat-card>
+
   </mat-step>
+
+  <mat-step>
+
+    <ng-template matStepLabel>Detalhes da placa</ng-template>
+
+    <mat-card class="mat-elevation-z3">
+
+      <mat-card-content>
+        <app-quote-first-step (onFormQuoteGroupChange)="onFormQuoteGroupChangeEvent($event)">
+
+        </app-quote-first-step>
+      </mat-card-content>
+
+      <button mat-raised-button type="button" color="secondary" matStepperPrevious>Voltar</button>
+      <button mat-raised-button type="button" color="primary" matStepperNext>Proximo</button>
+
+    </mat-card>
+
+  </mat-step>
+
+  <mat-step>
+
+    <mat-card>
+
+      <ng-template matStepLabel>Tipo de pagamento</ng-template>
+
+      <mat-card-content>
+        <app-quote-second-step (onSecondFormQuoteGroupChange)="onSecondFormQuoteGroupChangeEvent($event)">
+
+        </app-quote-second-step>
+      </mat-card-content>
+
+      <button mat-raised-button type="button" color="secondary" matStepperPrevious>Voltar</button>
+      <button mat-raised-button type="button" color="primary" (click)="onSubmit()">Finalizar pedido</button>
+
+    </mat-card>
+
+  </mat-step>
+
 </mat-stepper>
-<pre>PEDIDO A SER ENVIADO: {{ this.form.value | json }}</pre>

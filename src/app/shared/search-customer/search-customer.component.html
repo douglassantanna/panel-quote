@@ -1,5 +1,6 @@
 <form [formGroup]="customer">
-  <mat-form-field appearance="legacy">
+  <mat-form-field appearance="outline">
+    <mat-label>Procure por um cliente</mat-label>
     <input matInput maxlength="255" type="text" formControlName="name" placeholder="Nome" [formControl]="myControl"
       [matAutocomplete]="auto" />
     <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn(dataSource)"
@@ -10,5 +11,3 @@
     </mat-autocomplete>
   </mat-form-field>
 </form>
-
-<!-- <pre>SEARCH SUPPLIER: {{this.supplier.value | json }}</pre> -->

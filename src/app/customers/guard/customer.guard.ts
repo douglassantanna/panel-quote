@@ -18,7 +18,8 @@ export class CustomerGuard implements Resolve<NewCustomer> {
       return of({
         name: '',
         phoneNumber: '',
-        email: ''
+        email: '',
+        birthDate: new Date
       })
     }
   }

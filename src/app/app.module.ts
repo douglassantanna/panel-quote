@@ -4,6 +4,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -27,6 +29,8 @@ import { ErrorDialogComponent } from './shared/error-dialog/error-dialog.compone
 import { SearchCustomerComponent } from './shared/search-customer/search-customer.component';
 import { EditSupplierComponent } from './suppliers/edit-supplier/edit-supplier.component';
 import { SuppliersComponent } from './suppliers/suppliers/suppliers.component';
+import { QuoteFirstStepComponent } from './quotes/quote-first-step/quote-first-step.component';
+import { QuoteSecondStepComponent } from './quotes/quote-second-step/quote-second-step.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +43,9 @@ import { SuppliersComponent } from './suppliers/suppliers/suppliers.component';
     CustomersComponent,
     CreateQuoteComponent,
     QuotesComponent,
-    ViewQuoteCardComponent
+    ViewQuoteCardComponent,
+    QuoteFirstStepComponent,
+    QuoteSecondStepComponent
   ],
   imports: [
     BrowserModule,
@@ -59,7 +65,9 @@ import { SuppliersComponent } from './suppliers/suppliers/suppliers.component';
     ReactiveFormsModule,
     MatInputModule,
     MatAutocompleteModule,
-    MatDividerModule
+    MatDividerModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   providers: [],
   bootstrap: [AppComponent]

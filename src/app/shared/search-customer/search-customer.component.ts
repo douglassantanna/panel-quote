@@ -14,7 +14,7 @@ import { ErrorDialogComponent } from '../error-dialog/error-dialog.component';
 })
 export class SearchCustomerComponent implements OnInit {
   @Input() customerForm!: Customer;
-  @Output() onFormGroupChange = new EventEmitter();
+  @Output() onFormCustomerGroupChange = new EventEmitter();
   myControl = new FormControl<string | Customer>('');
   filteredCustomers!: Observable<Customer[]>;
   customer: FormGroup = {} as FormGroup;
@@ -29,9 +29,14 @@ export class SearchCustomerComponent implements OnInit {
 
   ngOnInit(): void {
     this.customer = this.fb.group({
-      name: ['', [Validators.required]]
+      id: ['', [Validators.required]],
+      name: ['', [Validators.required]],
+      email: ['', [Validators.required]],
+      phoneNumber: ['', [Validators.required]],
+      birthDate: ['', [Validators.required]],
     });
 
+    this.customer.valueChanges.subscribe(() => this.onFormCustomerGroupChange.emit(this.customer.value));
     this.getCustomers();
     this.customerFilter();
 
@@ -73,9 +78,11 @@ export class SearchCustomerComponent implements OnInit {
   }
 
   populateForm(id: any) {
-    this.customerService.getById(id).subscribe((x: Customer) => {
-      this.customerForm.id = x.id;
-      this.customerForm.phoneNumber = x.phoneNumber;
+    this.customerService.getById(id).subscribe((customer: Customer) => {
+      this.customer.patchValue({
+        id: customer.id,
+        // name: customer.name //não passar o nome, senão o input se esvazia, perde o nome
+      })
     })
 
   }

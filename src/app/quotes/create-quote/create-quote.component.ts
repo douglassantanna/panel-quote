@@ -1,31 +1,65 @@
-import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
+import { QuoteService } from './../quote.service';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Supplier } from 'src/app/suppliers/interfaces/ISupplier';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
+
+import { Customer } from './../../customers/interfaces/ICustomer';
+import { Quote } from './../interfaces/IQuote';
 
 @Component({
   selector: 'app-create-quote',
   templateUrl: './create-quote.component.html',
-  providers: [
-    {
-      provide: STEPPER_GLOBAL_OPTIONS,
-      useValue: { showError: true },
-    },
-  ],
+  styleUrls: ['./create-quote.component.scss']
 })
 export class CreateQuoteComponent implements OnInit {
-  supplier: Supplier = {} as Supplier;
-  form: FormGroup = {} as FormGroup;
+  customer: Customer = {} as Customer;
+  customerForm: FormGroup = {} as FormGroup;
 
-  secondFormGroup = this._formBuilder.group({
-    secondCtrl: ['', Validators.required],
-  });
-
-  constructor(private _formBuilder: FormBuilder) { }
+  constructor(
+    private _formBuilder: FormBuilder,
+    private router: Router,
+    private quoteService: QuoteService) { }
 
   ngOnInit(): void {
-    this.form = this._formBuilder.group({
-      address: this._formBuilder.group({})
+    this.customerForm = this._formBuilder.group({
+      id: [''],
+      panelWidth: [''],
+      panelHeigth: [''],
+      panelColor: [''],
+      fontColor: [''],
+      fontSize: [''],
+      fontType: [''],
+      textArea: [''],
+      paymentMethod: [''],
+    });
+  }
+  onFormCustomerGroupChangeEvent(customer: Customer) {
+    this.customerForm.patchValue({
+      id: customer.id,
     })
+  }
+
+  onFormQuoteGroupChangeEvent(quote: Quote) {
+    this.customerForm.patchValue({
+      panelWidth: quote.panelWidth,
+      panelHeigth: quote.panelHeigth,
+      panelColor: quote.panelColor,
+      fontColor: quote.fontColor,
+      fontSize: quote.fontSize,
+      fontType: quote.fontType,
+      textArea: quote.textArea,
+    })
+  }
+
+  onSecondFormQuoteGroupChangeEvent(quote: Quote) {
+    this.customerForm.patchValue({
+      paymentMethod: quote.paymentMethod,
+    })
+  }
+  onSubmit() {
+    this.quoteService.createQuote(this.customerForm.value).subscribe({
+      next: () => this.router.navigate(["/"])
+    });
+
   }
 }
