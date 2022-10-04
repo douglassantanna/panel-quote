@@ -24,7 +24,7 @@ export class EditCustomerComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.x) {
-      this.title = 'Editar Fornecedor';
+      this.title = 'Editar Cliente';
       this.customerForm = this._formBuilder.group({
         id: [this.x.id],
         name: [this.x.name, [Validators.required]],

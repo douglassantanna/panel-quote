@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, shareReplay } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Quote } from './interfaces/IQuote';
 const url = `${environment.url}/quotes`
@@ -15,8 +15,10 @@ export class QuoteService {
   getById(id: number) {
     return this.http.get<Quote>(`${url}/${id}`)
   }
-  updateQuote(quote: Quote) {
-    return this.http.put(`${url}/${quote.id}`, quote)
+  updateQuote(quote: Quote): Observable<any> {
+    return this.http.put(`${url}/${quote.id}`, quote).pipe(
+      shareReplay()
+    )
   }
   createQuote(quote: Quote): Observable<Quote> {
     return this.http.post<Quote>(url, quote);

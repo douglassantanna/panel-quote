@@ -14,7 +14,7 @@ import { QuoteService } from './../quote.service';
 })
 export class CreateQuoteComponent implements OnInit {
   customer: Customer = {} as Customer;
-  customerForm: FormGroup = {} as FormGroup;
+  quoteForm: FormGroup = {} as FormGroup;
 
   constructor(
     private _formBuilder: FormBuilder,
@@ -23,7 +23,7 @@ export class CreateQuoteComponent implements OnInit {
     private customerService: CustomerService) { }
 
   ngOnInit(): void {
-    this.customerForm = this._formBuilder.group({
+    this.quoteForm = this._formBuilder.group({
       customer: this._formBuilder.group({
         id: [''],
         name: [''],
@@ -42,7 +42,7 @@ export class CreateQuoteComponent implements OnInit {
   }
   onFormCustomerGroupChangeEvent(customer: Customer) {
     this.customerService.getById(customer.id).subscribe((x) => {
-      this.customerForm.patchValue({
+      this.quoteForm.patchValue({
         customer: {
           id: x.id,
           name: x.name,
@@ -54,7 +54,7 @@ export class CreateQuoteComponent implements OnInit {
   }
 
   onFormQuoteGroupChangeEvent(quote: Quote) {
-    this.customerForm.patchValue({
+    this.quoteForm.patchValue({
       panelWidth: quote.panelWidth,
       panelHeigth: quote.panelHeigth,
       panelColor: quote.panelColor,
@@ -66,12 +66,12 @@ export class CreateQuoteComponent implements OnInit {
   }
 
   onSecondFormQuoteGroupChangeEvent(quote: Quote) {
-    this.customerForm.patchValue({
+    this.quoteForm.patchValue({
       paymentMethod: quote.paymentMethod,
     })
   }
   onSubmit() {
-    this.quoteService.createQuote(this.customerForm.value).subscribe({
+    this.quoteService.createQuote(this.quoteForm.value).subscribe({
       next: () => this.router.navigate(["/"])
     });
 

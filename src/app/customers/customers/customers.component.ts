@@ -53,8 +53,6 @@ export class CustomersComponent implements OnInit {
       data: customer
     });
     dialogRef.afterClosed().pipe(switchMap((x: Customer) => {
-      console.log(x);
-
       if (x == undefined) return of();
       return this.customerService.updateCustomer(x);
     })).subscribe((x) => {

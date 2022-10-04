@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { catchError, of } from 'rxjs';
 import { ConfirmationDialogComponent } from 'src/app/shared/confirmation-dialog/confirmation-dialog.component';
 
 import { QuoteService } from '../quote.service';
@@ -15,7 +16,8 @@ export class ViewQuoteCardComponent implements OnInit {
 
   constructor(
     public dialog: MatDialog,
-    private quoteService: QuoteService) { }
+    private quoteService: QuoteService,
+  ) { }
 
   ngOnInit(): void {
   }
@@ -26,10 +28,18 @@ export class ViewQuoteCardComponent implements OnInit {
     dialogRef.afterClosed().subscribe((x) => {
       if (x) {
         this.deleteQuote(quote.id)
+        this.onRefresh()
       }
     })
   }
   deleteQuote(id: number) {
     this.quoteService.delete(id).subscribe(() => { });
+  }
+  onRefresh() {
+    this.quoteService.getQuotes().pipe(
+      catchError(error => {
+        return of([]);
+      })
+    );;
   }
 }
