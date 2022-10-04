@@ -1,10 +1,11 @@
-import { QuoteService } from './../quote.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { CustomerService } from 'src/app/customers/service/customer.service';
 
 import { Customer } from './../../customers/interfaces/ICustomer';
 import { Quote } from './../interfaces/IQuote';
+import { QuoteService } from './../quote.service';
 
 @Component({
   selector: 'app-create-quote',
@@ -18,11 +19,17 @@ export class CreateQuoteComponent implements OnInit {
   constructor(
     private _formBuilder: FormBuilder,
     private router: Router,
-    private quoteService: QuoteService) { }
+    private quoteService: QuoteService,
+    private customerService: CustomerService) { }
 
   ngOnInit(): void {
     this.customerForm = this._formBuilder.group({
-      id: [''],
+      customer: this._formBuilder.group({
+        id: [''],
+        name: [''],
+        email: [''],
+        phoneNumber: [''],
+      }),
       panelWidth: [''],
       panelHeigth: [''],
       panelColor: [''],
@@ -34,8 +41,15 @@ export class CreateQuoteComponent implements OnInit {
     });
   }
   onFormCustomerGroupChangeEvent(customer: Customer) {
-    this.customerForm.patchValue({
-      id: customer.id,
+    this.customerService.getById(customer.id).subscribe((x) => {
+      this.customerForm.patchValue({
+        customer: {
+          id: x.id,
+          name: x.name,
+          email: x.email,
+          phoneNumber: x.phoneNumber
+        }
+      })
     })
   }
 

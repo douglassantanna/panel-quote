@@ -31,6 +31,7 @@ import { EditSupplierComponent } from './suppliers/edit-supplier/edit-supplier.c
 import { SuppliersComponent } from './suppliers/suppliers/suppliers.component';
 import { QuoteFirstStepComponent } from './quotes/quote-first-step/quote-first-step.component';
 import { QuoteSecondStepComponent } from './quotes/quote-second-step/quote-second-step.component';
+import { ConfirmationDialogComponent } from './shared/confirmation-dialog/confirmation-dialog.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { QuoteSecondStepComponent } from './quotes/quote-second-step/quote-secon
     QuotesComponent,
     ViewQuoteCardComponent,
     QuoteFirstStepComponent,
-    QuoteSecondStepComponent
+    QuoteSecondStepComponent,
+    ConfirmationDialogComponent
   ],
   imports: [
     BrowserModule,
