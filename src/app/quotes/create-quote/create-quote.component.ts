@@ -13,7 +13,6 @@ import { QuoteService } from './../quote.service';
   styleUrls: ['./create-quote.component.scss']
 })
 export class CreateQuoteComponent implements OnInit {
-  customer: Customer = {} as Customer;
   quoteForm: FormGroup = {} as FormGroup;
 
   constructor(

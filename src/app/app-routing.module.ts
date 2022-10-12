@@ -9,6 +9,7 @@ import { QuotesComponent } from './quotes/quotes/quotes.component';
 import { EditSupplierComponent } from './suppliers/edit-supplier/edit-supplier.component';
 import { SupplierGuard } from './suppliers/guard/supplier.guard';
 import { SuppliersComponent } from './suppliers/suppliers/suppliers.component';
+import { UsersComponent } from './users/users/users.component';
 
 const routes: Routes = [
   { path: '', component: QuotesComponent },
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: 'new-customer', component: EditCustomerComponent, resolve: { customer: CustomerGuard } },
   { path: 'edit-customer/:id', component: EditCustomerComponent, resolve: { customer: CustomerGuard } },
   { path: 'create-quote', component: CreateQuoteComponent },
+  { path: 'users', component: UsersComponent },
 
 ];
 

@@ -32,6 +32,7 @@ import { SuppliersComponent } from './suppliers/suppliers/suppliers.component';
 import { QuoteFirstStepComponent } from './quotes/quote-first-step/quote-first-step.component';
 import { QuoteSecondStepComponent } from './quotes/quote-second-step/quote-second-step.component';
 import { ConfirmationDialogComponent } from './shared/confirmation-dialog/confirmation-dialog.component';
+import { UsersComponent } from './users/users/users.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { ConfirmationDialogComponent } from './shared/confirmation-dialog/confir
     ViewQuoteCardComponent,
     QuoteFirstStepComponent,
     QuoteSecondStepComponent,
-    ConfirmationDialogComponent
+    ConfirmationDialogComponent,
+    UsersComponent
   ],
   imports: [
     BrowserModule,
