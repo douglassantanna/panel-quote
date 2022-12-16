@@ -1,89 +1,109 @@
-<form [formGroup]="userForm">
+<div class="container mat-elevation-z2">
+  <div>
+    <img src="assets/Logotipo-Fram.png" alt="logotipo fram">
+  </div>
+  <form [formGroup]="userForm">
 
-  <mat-card>
+    <div class="header">
 
-    <mat-card-header>
+      <h2>
+        {{step == 1 ? 'Informações Pessoais' : 'Endereço'}}
+      </h2>
 
       <div>
-        <img src="assets/Logotipo-Fram.png" alt="logotipo fram">
-      </div>
-
-      <div class="progress-bar">
-
-        <mat-card-title>
-          {{step == 1 ? 'Informações Pessoais' : 'Endereço'}}
-        </mat-card-title>
         <mat-progress-bar [value]="value" [bufferValue]="bufferValue"></mat-progress-bar>
-
       </div>
 
-    </mat-card-header>
+    </div>
 
-    <mat-card-content>
+    <section *ngIf="step == 1" formGroupName="personalInfo">
 
-      <section *ngIf="step == 1" formGroupName="personalInfo">
+      <mat-form-field appearance="outline">
+        <mat-label>Nome</mat-label>
+        <input matInput placeholder="Nome" formControlName="firstName" type="text">
+        <mat-error *ngIf="firstName.hasError('required')">Nome é obrigatório</mat-error>
+      </mat-form-field>
 
-        <div>
+      <mat-form-field appearance="outline">
+        <mat-label>Sobrenome</mat-label>
+        <input matInput placeholder="Sobrenome" formControlName="lastName" type="text">
+      </mat-form-field>
 
-          <mat-form-field appearance="outline">
-            <mat-label>Nome</mat-label>
-            <input matInput placeholder="Nome" formControlName="firstName" type="text">
-            <mat-error *ngIf="firstName.hasError('required')">Nome é obrigatório</mat-error>
-          </mat-form-field>
+      <div class="part-field">
 
-          <mat-form-field appearance="outline">
-            <mat-label>Sobrenome</mat-label>
-            <input matInput placeholder="Sobrenome" formControlName="lastName" type="text">
-          </mat-form-field>
-
-        </div>
-
-        <mat-form-field appearance="outline">
+        <mat-form-field appearance="outline" id="cpf">
           <mat-label>CPF</mat-label>
           <input matInput placeholder="CPF" formControlName="cpf" type="number">
         </mat-form-field>
 
-      </section>
+        <mat-form-field appearance="outline" id="rg">
+          <mat-label>RG</mat-label>
+          <input matInput placeholder="RG" formControlName="cpf" type="number">
+        </mat-form-field>
 
-      <section *ngIf="step == 2" formGroupName="addressesInfo">
+      </div>
 
-        <div>
+      <mat-form-field appearance="outline">
+        <mat-label>Sexo</mat-label>
+        <input matInput placeholder="Sexo" formControlName="cpf" type="number">
+      </mat-form-field>
 
-          <mat-form-field appearance="outline" id="street">
-            <mat-label>Logradouro</mat-label>
-            <input matInput placeholder="Logradouro" formControlName="street" type="text">
-          </mat-form-field>
+    </section>
 
-          <mat-form-field appearance="outline" id="number">
-            <mat-label>Número</mat-label>
-            <input matInput placeholder="Número" formControlName="number" type="text">
-          </mat-form-field>
+    <section *ngIf="step == 2" formGroupName="addressesInfo">
 
-        </div>
+      <div class="part-field">
 
-        <div>
+        <mat-form-field appearance="outline" id="street">
+          <mat-label>Logradouro</mat-label>
+          <input matInput placeholder="Logradouro" formControlName="street" type="text">
+        </mat-form-field>
 
-          <mat-form-field appearance="outline">
-            <mat-label>CEP</mat-label>
-            <input matInput placeholder="CEP" formControlName="zipcode" type="number">
-          </mat-form-field>
+        <mat-form-field appearance="outline" id="number">
+          <mat-label>Número</mat-label>
+          <input matInput placeholder="Número" formControlName="number" type="text">
+        </mat-form-field>
 
-          <mat-form-field appearance="outline">
-            <mat-label>Cidade</mat-label>
-            <input matInput placeholder="Cidade" formControlName="city" type="text">
-          </mat-form-field>
-        </div>
+      </div>
 
-      </section>
+      <div>
 
-    </mat-card-content>
+        <mat-form-field appearance="outline">
+          <mat-label>CEP</mat-label>
+          <input matInput placeholder="CEP" formControlName="zipcode" type="number">
+        </mat-form-field>
 
-    <mat-card-actions align="end">
-      <button mat-button *ngIf="step != 1" color="secondary" (click)="previous()">Anterior</button>
-      <button mat-button color="primary" (click)="next()">Próximo</button>
-    </mat-card-actions>
+        <mat-form-field appearance="outline">
+          <mat-label>Cidade</mat-label>
+          <input matInput placeholder="Cidade" formControlName="city" type="text">
+        </mat-form-field>
+      </div>
 
-  </mat-card>
+    </section>
 
-</form>
-<!-- <pre>{{userForm.value | json}}</pre> -->
+    <section *ngIf="step == 3" formGroupName="addressesInfo">
+
+      <div class="part-field">
+
+        <mat-form-field appearance="outline" id="cpf">
+          <mat-label>Logradouro</mat-label>
+          <input matInput placeholder="Logradouro" formControlName="street" type="text">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" id="cpf">
+          <mat-label>Número</mat-label>
+          <input matInput placeholder="Número" formControlName="number" type="text">
+        </mat-form-field>
+
+      </div>
+
+    </section>
+
+    <div class="actions">
+
+      <button mat-raised-button *ngIf="step != 1" color="secondary" (click)="previous()">Anterior</button>
+      <button mat-raised-button color="primary" (click)="next()">Próximo</button>
+
+    </div>
+  </form>
+</div>
