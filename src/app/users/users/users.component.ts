@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup, ValidatorFn, FormControl } from '@angular/forms';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { FormArray, FormBuilder, FormGroup, ValidatorFn, FormControl, Validators } from '@angular/forms';
+import { Quote } from 'src/app/quotes/interfaces/IQuote';
 
 @Component({
   selector: 'app-users',
@@ -7,52 +8,41 @@ import { FormArray, FormBuilder, FormGroup, ValidatorFn, FormControl } from '@an
   styleUrls: ['./users.component.scss']
 })
 export class UsersComponent implements OnInit {
-
-  leagueForm!: FormGroup;
-
+  step = 1;
+  @Input() quoteFirstStep!: Quote;
+  @Output() onFormQuoteGroupChange = new EventEmitter();
+  userForm: FormGroup = {} as FormGroup;
+  bufferValue = 0;
+  value = 0;
   constructor(private fb: FormBuilder) { }
 
-  logToConsole(object: any) {
-    console.log(object);
-  }
-
-  ngOnInit() {
-    this.leagueForm = this.fb.group({
-      league_details: this.fb.group({
-        name: "",
-        founder: ""
+  ngOnInit(): void {
+    this.userForm = this.fb.group({
+      personalInfo: this.fb.group({
+        firstName: ['', [Validators.required]],
+        lastName: [''],
+        cpf: [''],
       }),
-      teams: this.fb.array([this.teams])
+      addressesInfo: this.fb.group({
+        street: [''],
+        number: [''],
+        zipcode: [''],
+        city: [''],
+      }),
     });
-  }
-
-  get teams(): FormGroup {
-    return this.fb.group({
-      team_name: "",
-      players: this.fb.array([this.players])
-    });
+    this.userForm.valueChanges.subscribe(() => this.onFormQuoteGroupChange.emit(this.userForm.value));
 
   }
-  get players(): FormGroup {
-    return this.fb.group({
-      player_name: "",
-      player_number: ""
-    });
+  previous() {
+    this.step = this.step - 1;
+    this.value = this.value - 50;
+    this.bufferValue = this.bufferValue - 70;
   }
+  next() {
+    this.step = this.step + 1;
+    this.value = this.value + 50;
+    this.bufferValue = this.bufferValue + 70;
 
-  addTeam() {
-    (this.leagueForm.get("teams") as FormArray).push(this.teams);
   }
-
-  deleteTeam(index: any) {
-    (this.leagueForm.get("teams") as FormArray).removeAt(index);
-  }
-
-  addPlayer(team: any) {
-    team.get("players").push(this.players);
-  }
-
-  deletePlayer(team: any, index: any) {
-    team.get("players").removeAt(index);
-  }
+  get firstName() { return this.userForm.get('personalInfo.firstName') as FormControl; }
 }

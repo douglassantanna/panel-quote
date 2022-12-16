@@ -12,6 +12,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -23,15 +24,15 @@ import { AppComponent } from './app.component';
 import { CustomersComponent } from './customers/customers/customers.component';
 import { EditCustomerComponent } from './customers/edit-customer/edit-customer.component';
 import { CreateQuoteComponent } from './quotes/create-quote/create-quote.component';
+import { QuoteFirstStepComponent } from './quotes/quote-first-step/quote-first-step.component';
+import { QuoteSecondStepComponent } from './quotes/quote-second-step/quote-second-step.component';
 import { QuotesComponent } from './quotes/quotes/quotes.component';
 import { ViewQuoteCardComponent } from './quotes/view-quote-card/view-quote-card.component';
+import { ConfirmationDialogComponent } from './shared/confirmation-dialog/confirmation-dialog.component';
 import { ErrorDialogComponent } from './shared/error-dialog/error-dialog.component';
 import { SearchCustomerComponent } from './shared/search-customer/search-customer.component';
 import { EditSupplierComponent } from './suppliers/edit-supplier/edit-supplier.component';
 import { SuppliersComponent } from './suppliers/suppliers/suppliers.component';
-import { QuoteFirstStepComponent } from './quotes/quote-first-step/quote-first-step.component';
-import { QuoteSecondStepComponent } from './quotes/quote-second-step/quote-second-step.component';
-import { ConfirmationDialogComponent } from './shared/confirmation-dialog/confirmation-dialog.component';
 import { UsersComponent } from './users/users/users.component';
 
 @NgModule({
@@ -71,7 +72,8 @@ import { UsersComponent } from './users/users/users.component';
     MatAutocompleteModule,
     MatDividerModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatProgressBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -209,6 +209,23 @@
       "fontType": "Times New Roman",
       "paymentMethod": "cartão de crédito",
       "textArea": "The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan. A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally bred for hunting."
+    },
+    {
+      "customer": {
+        "id": 6,
+        "name": "Claudio",
+        "email": "13219-110",
+        "phoneNumber": "Rua São José dos Campos"
+      },
+      "panelWidth": "1",
+      "panelHeigth": "1",
+      "panelColor": "verde",
+      "fontColor": "amarelo",
+      "fontSize": "1",
+      "fontType": "new roman",
+      "textArea": "testando",
+      "paymentMethod": "pix",
+      "id": 3
     }
   ]
 }
