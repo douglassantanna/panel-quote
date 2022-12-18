@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup, ValidatorFn, FormControl, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Quote } from 'src/app/quotes/interfaces/IQuote';
+
 import { User } from '../interfaces/User';
 import { UserService } from '../service/user.service';
 
@@ -61,14 +62,15 @@ export class UsersComponent implements OnInit {
         if (user) {
           console.log('usuario existe')
         }
-        this.userService.createUser(this.userForm.value).subscribe(() => {
-          console.log('usuario criado')
-        })
       });
+    // this.userService.createUser(this.userForm.value).subscribe(() => {
+    //   console.log('usuario criado')
+    // }, (error) => {
+    //   console.log('erro')
+    // });
     this.step = this.step + 1;
     this.value = this.value + 25;
     this.bufferValue = this.bufferValue + 70;
-
   }
 
   get password() { return this.userForm.get('loginInfo.password') as FormControl; }

@@ -1,7 +1,7 @@
-import { Supplier } from 'src/app/suppliers/interfaces/ISupplier';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Supplier } from 'src/app/suppliers/interfaces/ISupplier';
 
 import { SupplierService } from './../service/supplier.service';
 

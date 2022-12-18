@@ -228,5 +228,32 @@
       "id": 3
     }
   ],
-  "users": []
+  "users": [
+    {
+      "loginInfo": {
+        "email": "teste@teste.com",
+        "password": "aaaaaa",
+        "confirmPassword": "aaaaaa",
+        "cellphoneNumber": 11941012994
+      },
+      "personalInfo": {
+        "firstName": "",
+        "lastName": "",
+        "cpf": ""
+      },
+      "residencialAddressInfo": {
+        "street": "",
+        "number": "",
+        "zipcode": "",
+        "city": ""
+      },
+      "comercialAddressInfo": {
+        "street": "",
+        "number": "",
+        "zipcode": "",
+        "city": ""
+      },
+      "id": 3
+    }
+  ]
 }
