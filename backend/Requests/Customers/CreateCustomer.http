@@ -1,0 +1,10 @@
+@host=http://localhost:5204
+POST {{host}}/Customer/create-customer
+content-type: application/json
+
+{
+    "fullName": "douglas",
+    "email": "d@d.com",
+    "telephoneNumber": "1234567890",
+    "birthDate": "2023-01-19T03:27:54.505Z"
+}
